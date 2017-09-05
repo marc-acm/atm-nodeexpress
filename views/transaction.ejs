@@ -1,0 +1,28 @@
+
+<div class="container">
+	
+	<div class="row">
+		<div class="col-md-4">
+
+			<p class="welcome">Current User: <%= username %> </p>
+			 <a href="/logout" >Logout</a>
+			
+			<p class="balance">Balance:  <%= money%></>
+		</div>
+		
+		<div class="col-md-8">
+	
+			<form method="post" action="/transact" class="form-group">
+			<input type="text" name="money" class="form-control" placeholder="Enter Amount..." />
+			<input type="submit" name="withdraw" value="Withdraw" class="form-control btn-primary" />
+			<input type="submit" name="deposit" value="Deposit" class="form-control btn-primary" />
+			</form>
+		
+		</div>
+	
+	</div>	
+	
+
+
+	
+</div>
