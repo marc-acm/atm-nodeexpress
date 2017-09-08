@@ -7,7 +7,10 @@ var ulist = [{"username":"abby", "password":"123456", "amount":25000},
 		 {"username":"ebby", "password":"123456", "amount":45000},
          ];
 
+
+
 var r = express();
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
 	if(req.cookies['username'] != null ){
@@ -17,6 +20,16 @@ router.get('/', function(req, res, next) {
 	}
  
 });
+
+
+router.get('/execute', function(req, res, next) {
+	if(req.cookies['username'] != null ){
+		res.render('execute', {amount: req.cookies['amount'], username: req.cookies['username']});
+	}else{
+		 res.redirect('/');
+	}
+ });
+
 
 router.post('/execute', function(req, res, next) {
 	var login = false;
@@ -60,8 +73,6 @@ router.post('/deals', function(req, res, next) {
 						break;
 					}
 				}
-
-	
 	}
 
 	if(req.body.deposit == "Deposit"){
@@ -79,17 +90,6 @@ router.post('/deals', function(req, res, next) {
 	// res.redirect('/execute');
 	});
 
-
-
-
-router.get('/execute', function(req, res, next) {
-	if(req.cookies['username'] != null ){
-		res.render('execute', {amount: req.cookies['amount'], username: req.cookies['username']});
-	}else{
-		 res.redirect('/');
-	}
-  
-});
 
 router.get('/users', function(req, res, next) {
   res.send('Number of Accounts: ' + ulist.length + '<br /><br /> List </br /> ' + JSON.stringify(ulist));
